@@ -38,7 +38,9 @@ def getSubscriberCount():
     return statement(subsCount_msg)
 
 
+
 def getTimeDiff(date):
+    # TODO
     # parse ISO8601 str to datetime
     vdate = dateutil.parser.parse(date)
     # add timezone to become aware datetime object
