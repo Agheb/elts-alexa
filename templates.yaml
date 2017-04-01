@@ -1,0 +1,4 @@
+welcome: ' Willkommen zu Eyeslovetosee.'
+reprompt: 'Ich habe nicht verstanden was du meinst. Bitte wiederhole deine Anfrage'
+latest_video: 'Das aktuellste Video: {{title}} wurde vor {{date}} veroeffentlicht.'
+subsCountYoutube: 'Der Youtube Kanal hat momentan {{count}} Abonennten'
