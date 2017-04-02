@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 import logging
 import dateutil.parser
 import datetime
 import pytz
+from feed import getPosts
 from flask import Flask, render_template
 
 from flask_ask import Ask, statement, question, session
@@ -31,6 +33,16 @@ def launchLatestVid():
     return statement(latest_msg)
 
 
+@ask.intent('ReadPostsIntent')
+def readPosts():
+    posts = getPosts()
+    p_title = posts[0]['title']
+    p_text = posts[1]['description']
+    p_author = 'Marcus Schweighoefer'
+    post_msg = render_template('readPost',text=p_text).encode('utf-8')
+    return statement(post_msg)
+
+
 @ask.intent('SubsCountYoutube')
 def getSubscriberCount():
     subsCount = str(currentFollower())
@@ -38,9 +50,8 @@ def getSubscriberCount():
     return statement(subsCount_msg)
 
 
-
 def getTimeDiff(date):
-    # TODO
+    # TODO function is horseshit
     # parse ISO8601 str to datetime
     vdate = dateutil.parser.parse(date)
     # add timezone to become aware datetime object

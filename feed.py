@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import feedparser
 import logging
 import sys
@@ -35,6 +36,7 @@ def getPosts(numberOfEntries=5):
 
 
 
+
 if __name__ == '__main__':
     # e = parse_RSS_Feed(RSS_PATH)
-    print getPosts()
+    print type(getPosts()[0]['title'].encode('utf-8'))
