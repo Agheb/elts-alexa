@@ -3,7 +3,7 @@ import logging
 import dateutil.parser
 import datetime
 import pytz
-from feed import getPosts
+from feed import postGrabber
 from flask import Flask, render_template
 
 from flask_ask import Ask, statement, question, session
@@ -35,12 +35,18 @@ def launchLatestVid():
 
 @ask.intent('ReadPostsIntent')
 def readPosts():
-    posts = getPosts()
-    p_title = posts[0]['title']
+    # TODO modify getPost function to pass an argument
+    posts = postGrabber()
+    p_title = posts[1]['title']
     p_text = posts[1]['description']
     p_author = 'Marcus Schweighoefer'
-    post_msg = render_template('readPost',text=p_text).encode('utf-8')
-    return statement(post_msg)
+    post_msg = render_template('readPost', title=p_title, text=p_text).encode('utf-8')
+    return question(post_msg)
+
+
+@ask.intent('AMAZON.NextIntent')
+def nextPost():
+    return readPosts()
 
 
 @ask.intent('SubsCountYoutube')
@@ -48,6 +54,15 @@ def getSubscriberCount():
     subsCount = str(currentFollower())
     subsCount_msg = render_template('subsCountYoutube', count=subsCount)
     return statement(subsCount_msg)
+
+
+@ask.intent('AMAZON.StopIntent')
+def quit():
+    return statement('Skill beendet.Vielen Dank')
+
+@ask.session_ended
+def session_ended():
+    return "", 200
 
 
 def getTimeDiff(date):

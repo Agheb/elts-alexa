@@ -6,7 +6,6 @@ import sys
 import time
 import re
 from config import rss_feed
-from operator import itemgetter
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
@@ -18,14 +17,14 @@ def parse_RSS_Feed(rss_path):
     return feedparser.parse(rss_path)
 
 
-def getPosts(numberOfEntries=5):
+def postGrabber(max = 5):
     '''
-    default set to last 5 posts
+    max: default=5 maximum of posts to grab from rss feed
     TODO: article should not exceed 8000 characters
     '''
     content = parse_RSS_Feed(RSS_PATH)
     posts = []
-    for eachEntry in content.entries[0:numberOfEntries]:
+    for eachEntry in content.entries[0:max]:
         entry = {}
         entry['title'] = eachEntry.title
         entry['link'] = eachEntry.link
@@ -44,5 +43,4 @@ def removeURL(text):
 
     return re.sub(regex,'',text)
 
-if __name__ == '__main__':
-    print "seems fine"
+# if __name__ == '__main__':
