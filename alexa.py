@@ -37,8 +37,8 @@ def launchLatestVid():
 def readPosts():
     # TODO modify getPost function to pass an argument
     posts = postGrabber()
-    p_title = posts[1]['title']
-    p_text = posts[1]['description']
+    p_title = posts[3]['title']
+    p_text = posts[3]['description']
     p_author = 'Marcus Schweighoefer'
     post_msg = render_template('readPost', title=p_title, text=p_text).encode('utf-8')
     return question(post_msg)
@@ -58,7 +58,8 @@ def getSubscriberCount():
 
 @ask.intent('AMAZON.StopIntent')
 def quit():
-    return statement('Skill beendet.Vielen Dank')
+    return statement('Vielen Dank')
+
 
 @ask.session_ended
 def session_ended():
