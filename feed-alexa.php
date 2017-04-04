@@ -26,7 +26,7 @@ xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
 <?php
 
 /* Text-Laenge: */
-function text($string, $length = '3000', $replacer = '...') {
+function text($string, $length = '4500', $replacer = '...') {
   $string = preg_replace("/\[caption.*\[\/caption\]/", '', strip_tags($string));
   if(strlen($string) > $length)
     return (preg_match('/^(.*)\W.*$/', substr($string, 0, $length+1), $matches) ? $matches[1] : substr($string, 0, $length)) . $replacer;
@@ -44,7 +44,7 @@ foreach ($posts as $post) {
 <link><?php echo get_permalink($post->ID); ?></link>
 <pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false); ?></pubDate>
 <description><?php echo text($post->post_content);  ?></description>
-<dc:creator><?php get_the_author(); ?></dc:creator>
+<dc:creator><?php echo the_author($post->ID); ?></dc:creator>
 <guid><?php echo get_permalink($post->ID); ?></guid>
 </item>
 

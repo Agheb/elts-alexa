@@ -8,7 +8,7 @@ import re
 from config import rss_feed
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-
+# feed currently limited to 10 entries
 RSS_PATH = rss_feed['general']
 
 
@@ -17,22 +17,29 @@ def parse_RSS_Feed(rss_path):
     return feedparser.parse(rss_path)
 
 
-def postGrabber(max = 5):
+def get_FeedItem(currItem):
     '''
-    max: default=5 maximum of posts to grab from rss feed
     TODO: article should not exceed 8000 characters
     '''
-    content = parse_RSS_Feed(RSS_PATH)
-    posts = []
-    for eachEntry in content.entries[0:max]:
+    posts = parse_RSS_Feed(RSS_PATH).entries
+    post = posts[currItem]
+    logging.info('currItem is %s',currItem)
+    if currItem != len(posts):
         entry = {}
-        entry['title'] = eachEntry.title
-        entry['link'] = eachEntry.link
-        entry['description'] = removeURL(eachEntry.description)
-        entry['pubDate'] = eachEntry.published
-        posts.append(entry)
+        entry['title'] = post.title
+        entry['link'] = post.link
+        entry['description'] = removeURL(post.description)
+        entry['pubDate'] = post.published
+        entry['shouldEndsession'] = False
+        return entry
+    else:
+        return {'shouldEndsession':True}
+def get_Post(currentPost,posts):
+    '''
+    posts: list of posts
 
-    return posts
+    '''
+    return posts[currentPost]
 
 def removeURL(text):
     '''
@@ -43,4 +50,5 @@ def removeURL(text):
 
     return re.sub(regex,'',text)
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
+    print len(parse_RSS_Feed(RSS_PATH).entries)
