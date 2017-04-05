@@ -74,6 +74,7 @@ def nextPost():
 
     return readPost(new_post_idx)
 
+
 @ask.session_ended
 def session_ended():
     logging.info("session ended")
@@ -88,7 +89,7 @@ def getTimeDiff(date):
     now = datetime.datetime.now(tz=pytz.utc)
     diff = now - vdate
     if diff.days <= 0:
-        return str(divmod(diff.total_seconds, 3600)) + ' ' + 'Stunden'
+        return str(diff.seconds // 3600) + ' ' + 'Stunden'
     else:
         return str(diff.days) + ' ' + 'Tagen'
 

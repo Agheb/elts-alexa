@@ -44,7 +44,7 @@ foreach ($posts as $post) {
 <link><?php echo get_permalink($post->ID); ?></link>
 <pubDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false); ?></pubDate>
 <description><?php echo text($post->post_content);  ?></description>
-<dc:creator><?php echo the_author($post->ID); ?></dc:creator>
+<dc:creator><?php the_author(); ?></dc:creator>
 <guid><?php echo get_permalink($post->ID); ?></guid>
 </item>
 

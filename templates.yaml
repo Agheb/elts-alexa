@@ -4,7 +4,7 @@ latest_video: Das aktuellste Video {{title}} wurde vor {{date}} veroeffentlicht
 subsCountYoutube: Der Youtube Kanal hat momentan {{count}} Abonennten
 readPost: |
     <speak>
-        {{title}} von Julia Haug
+        {{title}}
         <break time="2s"/>
         {{text}}
     </speak>
