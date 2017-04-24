@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 import logging
-import dateutil.parser
 import datetime
+import dateutil.parser
 import pytz
-from feed import get_FeedItem
+from feed import get_feed_item
+
 from flask import Flask, render_template
 
 from flask_ask import Ask, statement, question, session
@@ -33,7 +34,7 @@ def readPost(post_idx):
     if post_idx is None:
         post_idx = set_post_idx()
 
-    tmp = get_FeedItem(post_idx)
+    tmp = get_feed_item(post_idx)
 
     if tmp['shouldEndsession'] is True:
         return statement('Keine weitere Artikel verfügbar')
@@ -82,7 +83,7 @@ def session_ended():
 
 
 def getTimeDiff(date):
-    # TODO function is horseshit
+    # TODO add minutes output
     # parse ISO8601 str to datetime
     vdate = dateutil.parser.parse(date)
     # add timezone to become aware datetime object

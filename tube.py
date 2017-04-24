@@ -1,8 +1,6 @@
 #!/usr/bin/env
-import json
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from oauth2client.tools import argparser
 from config import youtube_api
 
 DEVELOPER_KEY = youtube_api['key']
@@ -16,8 +14,6 @@ def youtube():
 
 
 def channelList():
-
-    # https://www.googleapis.com/youtube/v3/playlistItems\?part\=snippet\&playlistId\=UUsK8wjQhmpPSgRJ55mgxQkw\&key\=\AIzaSyCNGralw9PmUPtnKiryYmKhliR9lkIAzQ4
 
     # response of type dict
 
