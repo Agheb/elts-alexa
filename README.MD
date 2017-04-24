@@ -1,14 +1,14 @@
 # ELTS Alexa Skill 
 
 This skill is for the amazing people behind 
-[eyeslovetosee](www.eyeslovetosee.de).
+[eyeslovetosee](http://www.eyeslovetosee.de).
 It has been developed using the [Alexa Skills Kit](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit) in Python.
 
 The current version is for internal use only; other features may be added in the future.
 
 ### Current features:
 
-* Read latest articles of [eyeslovetosee](www.eyeslovetosee.de)
+* Read latest articles of [eyeslovetosee]http://www.eyeslovetosee.de)
 * Get relevant key-metrics of eyeslovetosee's youtube channel (i.e follower count, latest video etc)
 * Display useful 'cards' in Alexa App
 
