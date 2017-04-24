@@ -8,7 +8,7 @@ The current version is for internal use only; other features may be added in the
 
 ### Current features:
 
-* Read latest articles of [eyeslovetosee]http://www.eyeslovetosee.de)
+* Read latest articles of [eyeslovetosee](http://www.eyeslovetosee.de)
 * Get relevant key-metrics of eyeslovetosee's youtube channel (i.e follower count, latest video etc)
 * Display useful 'cards' in Alexa App
 
